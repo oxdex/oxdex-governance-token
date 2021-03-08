@@ -1,0 +1,33 @@
+{
+  "name": "oxdex-governance-token",
+  "version": "0.0.1-beta.1",
+  "license": "MIT",
+  "scripts": {
+    "lint": "prettier contracts test --check",
+    "lint:fix": "prettier contracts test --write",
+    "compile": "waffle && yarn gentypes",
+    "pretest": "yarn compile",
+    "test": "mocha",
+    "gentypes": "typechain --target=ethers-v5 --outDir=types ./build/OxDex.json",
+    "precompile": "yarn clean",
+    "clean": "rimraf build types"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "2.5.1"
+  },
+  "devDependencies": {
+    "@typechain/ethers-v5": "^6.0.2",
+    "@types/chai": "^4.2.15",
+    "@types/mocha": "^8.2.1",
+    "chai": "^4.3.3",
+    "ethereum-waffle": "^3.3.0",
+    "mocha": "^8.3.1",
+    "prettier": "^2.2.1",
+    "prettier-plugin-solidity": "^1.0.0-beta.5",
+    "rimraf": "^3.0.2",
+    "ts-node": "^9.1.1",
+    "typechain": "^4.0.3",
+    "typechain-target-ethers-v5": "^5.0.1",
+    "typescript": "^4.2.3"
+  }
+}
