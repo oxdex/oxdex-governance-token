@@ -8,7 +8,7 @@
     "compile": "waffle && yarn gentypes",
     "pretest": "yarn compile",
     "test": "mocha",
-    "gentypes": "typechain --target=ethers-v5 --outDir=types ./build/OxDex.json",
+    "gentypes": "typechain --target=ethers-v5 --outDir=types ./build/**/*.json",
     "precompile": "yarn clean",
     "clean": "rimraf build types"
   },

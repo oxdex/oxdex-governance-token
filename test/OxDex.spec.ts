@@ -7,11 +7,8 @@ import OxDexJson from "../build/OxDex.json";
 import { OxDex } from "../types";
 
 describe("OxDex", async () => {
-  const NAME = "OXDEX";
-  const SYMBOL = "OX";
-
   async function fixture([wallet, other]: Wallet[], _: providers.Provider) {
-    const token = await deployContract(wallet, OxDexJson, [NAME, SYMBOL]);
+    const token = await deployContract(wallet, OxDexJson);
     return { token: token as OxDex, wallet, other };
   }
 
@@ -19,11 +16,10 @@ describe("OxDex", async () => {
     const { token, wallet } = await loadFixture(fixture);
     expect(await token.balanceOf(wallet.address)).to.eq(0);
     expect(await token.cap()).to.eq(
-      BigNumber.from("1000000000000000000000000000"),
-      "cap"
+      BigNumber.from("1000000000000000000000000000")
     );
-    expect(await token.name()).to.eq(NAME);
-    expect(await token.symbol()).to.eq(SYMBOL);
+    expect(await token.name()).to.eq("OXDEX");
+    expect(await token.symbol()).to.eq("OX");
     expect(await token.decimals()).to.eq(18);
   });
 });
