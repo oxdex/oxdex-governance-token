@@ -9,10 +9,7 @@ import OxDexJson from "../build/OX.json";
 import { OX, TreasuryVester } from "../types";
 
 describe("TreasuryVester", () => {
-  function mineBlock(
-    provider: providers.Web3Provider,
-    timestamp: number
-  ) {
+  function mineBlock(provider: providers.Web3Provider, timestamp: number) {
     return provider.send("evm_mine", [timestamp]);
   }
 
