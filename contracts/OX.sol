@@ -6,11 +6,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20Detailed.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20Capped.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-contract OxDex is
-    ERC20,
-    ERC20Detailed("OXDEX", "OX", 18),
-    ERC20Capped(1e9 * 1e18)
-{
+contract OX is ERC20, ERC20Detailed("OX", "OX", 18), ERC20Capped(1e9 * 1e18) {
     bytes32 public DOMAIN_SEPARATOR;
     bytes32 public constant PERMIT_TYPEHASH =
         keccak256(
@@ -29,7 +25,7 @@ contract OxDex is
                 keccak256(
                     "EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)"
                 ),
-                keccak256(bytes(name())),
+                keccak256(bytes("OX")),
                 keccak256(bytes("1")),
                 chainId,
                 address(this)

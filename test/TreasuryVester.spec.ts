@@ -5,14 +5,14 @@ chai.use(solidity);
 
 import TreasuryVesterJson from "../build/TreasuryVester.json";
 
-import OxDexJson from "../build/OxDex.json";
-import { OxDex, TreasuryVester } from "../types";
+import OxDexJson from "../build/OX.json";
+import { OX, TreasuryVester } from "../types";
 
 describe("TreasuryVester", () => {
-  async function mineBlock(
+  function mineBlock(
     provider: providers.Web3Provider,
     timestamp: number
-  ): Promise<void> {
+  ) {
     return provider.send("evm_mine", [timestamp]);
   }
 
@@ -38,7 +38,7 @@ describe("TreasuryVester", () => {
     // fund the treasury
     await ox.mint(treasuryVester.address, vestingAmount);
     return {
-      ox: ox as OxDex,
+      ox: ox as OX,
       treasuryVester: treasuryVester as TreasuryVester,
       provider: provider as providers.Web3Provider,
       wallet,
@@ -50,7 +50,7 @@ describe("TreasuryVester", () => {
     };
   }
 
-  let ox: OxDex;
+  let ox: OX;
   let treasuryVester: TreasuryVester;
   let vestingAmount: BigNumber;
   let vestingBegin: number;

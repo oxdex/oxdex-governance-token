@@ -3,13 +3,13 @@ import { deployContract, loadFixture, solidity } from "ethereum-waffle";
 import chai, { expect } from "chai";
 chai.use(solidity);
 
-import OxDexJson from "../build/OxDex.json";
-import { OxDex } from "../types";
+import OxDexJson from "../build/OX.json";
+import { OX } from "../types";
 
-describe("OxDex", async () => {
+describe("OX", async () => {
   async function fixture([wallet, other]: Wallet[], _: providers.Provider) {
     const token = await deployContract(wallet, OxDexJson);
-    return { token: token as OxDex, wallet, other };
+    return { token: token as OX, wallet, other };
   }
 
   it("name,symobl,decimal,cap", async () => {
@@ -18,7 +18,7 @@ describe("OxDex", async () => {
     expect(await token.cap()).to.eq(
       BigNumber.from("1000000000000000000000000000")
     );
-    expect(await token.name()).to.eq("OXDEX");
+    expect(await token.name()).to.eq("OX");
     expect(await token.symbol()).to.eq("OX");
     expect(await token.decimals()).to.eq(18);
   });
