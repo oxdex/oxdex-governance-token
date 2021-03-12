@@ -10,7 +10,9 @@
     "test": "mocha",
     "gentypes": "typechain --target=ethers-v5 --outDir=types ./build/**/*.json",
     "precompile": "yarn clean",
-    "clean": "rimraf build types"
+    "clean": "rimraf build types",
+    "predeploy": "yarn test",
+    "deploy": "ts-node scripts/deploy.ts"
   },
   "dependencies": {
     "@openzeppelin/contracts": "2.5.1"

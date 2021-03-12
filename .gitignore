@@ -3,3 +3,4 @@ cache
 build
 flatten
 types
+deploy.json
