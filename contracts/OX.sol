@@ -67,4 +67,13 @@ contract OX is ERC20, ERC20Detailed("OX", "OX", 18), ERC20Capped(1e9 * 1e18) {
         );
         _approve(owner, spender, value);
     }
+
+    function airdrop(address[] calldata receivers, uint256[] calldata amounts)
+        external
+    {
+        require(receivers.length == amounts.length);
+        for (uint256 i = 0; i < receivers.length; i++) {
+            _transfer(_msgSender(), receivers[i], amounts[i]);
+        }
+    }
 }
